@@ -1,0 +1,3138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<title>Casablanca Pocket Guide</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+  background:#efe8dc;
+
+  color:#172637;
+
+  overflow-x:hidden;
+}
+
+button,
+a{
+  font:inherit;
+}
+
+
+/* =========================================================
+   COLORS
+========================================================= */
+
+:root{
+
+  --cream:#f4eee4;
+
+  --paper:#fffaf3;
+
+  --navy:#14273c;
+
+  --blue:#315d72;
+
+  --ocean:#5d8792;
+
+  --green:#466b5a;
+
+  --terracotta:#b9684f;
+
+  --sand:#d9c2a0;
+
+  --gold:#c49757;
+
+  --ink:#182534;
+
+  --soft:#786f65;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:100svh;
+
+  position:relative;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+
+  padding:
+    calc(env(safe-area-inset-top) + 32px)
+    22px
+    calc(env(safe-area-inset-bottom) + 45px);
+
+  overflow:hidden;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(231,186,139,.30),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 80%,
+      rgba(79,124,137,.40),
+      transparent 35%
+    ),
+    linear-gradient(
+      160deg,
+      #122437 0%,
+      #24465b 50%,
+      #6e817a 100%
+    );
+
+  color:#fff9f0;
+}
+
+
+/* SUN */
+
+.sun{
+  position:absolute;
+
+  top:10%;
+  right:-45px;
+
+  width:190px;
+  height:190px;
+
+  border-radius:50%;
+
+  background:
+    rgba(237,196,145,.19);
+
+  border:
+    1px solid
+    rgba(255,235,210,.20);
+
+  box-shadow:
+    0 0 90px
+    rgba(231,183,137,.17);
+}
+
+
+/* OCEAN LINES */
+
+.wave{
+  position:absolute;
+
+  width:120%;
+
+  left:-10%;
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  border-radius:50%;
+}
+
+.wave.one{
+  height:240px;
+  bottom:18%;
+}
+
+.wave.two{
+  height:330px;
+  bottom:13%;
+}
+
+.wave.three{
+  height:420px;
+  bottom:8%;
+}
+
+
+/* HERO TOP */
+
+.heroTop{
+  position:absolute;
+
+  top:
+    calc(
+      env(safe-area-inset-top) +
+      24px
+    );
+
+  left:22px;
+  right:22px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  z-index:3;
+}
+
+.heroTag{
+  font-size:9px;
+  font-weight:800;
+
+  letter-spacing:.25em;
+
+  text-transform:uppercase;
+
+  color:
+    rgba(255,247,237,.68);
+}
+
+.heroDates{
+  padding:
+    8px 12px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.18);
+
+  border-radius:999px;
+
+  font-size:9px;
+
+  letter-spacing:.13em;
+
+  color:#f5e7d7;
+
+  background:
+    rgba(255,255,255,.05);
+
+  backdrop-filter:blur(10px);
+}
+
+
+/* HERO COPY */
+
+.heroContent{
+  position:relative;
+
+  z-index:3;
+}
+
+.heroEyebrow{
+  font-size:9px;
+  font-weight:800;
+
+  letter-spacing:.30em;
+
+  color:#e8c9a8;
+
+  text-transform:uppercase;
+}
+
+.heroTitle{
+  margin-top:15px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      64px,
+      18vw,
+      124px
+    );
+
+  line-height:.80;
+
+  font-weight:400;
+
+  letter-spacing:-.07em;
+}
+
+.heroTitle span{
+  display:block;
+
+  margin-top:13px;
+
+  font-style:italic;
+
+  color:#e8c4a0;
+}
+
+.heroText{
+  max-width:520px;
+
+  margin-top:28px;
+
+  font-size:
+    clamp(
+      16px,
+      4vw,
+      20px
+    );
+
+  line-height:1.6;
+
+  color:
+    rgba(255,247,237,.76);
+}
+
+.heroText strong{
+  color:#fff8ee;
+}
+
+
+/* SCROLL */
+
+.scrollLine{
+  margin-top:40px;
+
+  display:flex;
+  align-items:center;
+
+  gap:13px;
+
+  font-size:8px;
+  font-weight:800;
+
+  letter-spacing:.26em;
+
+  color:
+    rgba(255,255,255,.42);
+}
+
+.scrollLine::before{
+  content:"";
+
+  width:40px;
+  height:1px;
+
+  background:
+    rgba(255,255,255,.30);
+}
+
+
+/* =========================================================
+   QUICK NAV
+========================================================= */
+
+.quickWrap{
+  position:sticky;
+
+  top:0;
+
+  z-index:100;
+
+  padding:
+    11px 12px;
+
+  background:
+    rgba(244,238,228,.89);
+
+  backdrop-filter:blur(18px);
+
+  border-bottom:
+    1px solid
+    rgba(38,47,57,.08);
+
+  overflow-x:auto;
+
+  scrollbar-width:none;
+}
+
+.quickWrap::-webkit-scrollbar{
+  display:none;
+}
+
+.quickNav{
+  display:flex;
+
+  width:max-content;
+
+  gap:8px;
+}
+
+.quickButton{
+  text-decoration:none;
+
+  color:var(--navy);
+
+  padding:
+    10px 15px;
+
+  border-radius:999px;
+
+  border:
+    1px solid
+    rgba(24,37,52,.10);
+
+  background:
+    rgba(255,255,255,.50);
+
+  font-size:9px;
+  font-weight:800;
+
+  letter-spacing:.10em;
+
+  white-space:nowrap;
+}
+
+.quickButton.dark{
+  background:var(--navy);
+
+  color:#fff8ef;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.section{
+  padding:
+    85px 20px;
+}
+
+.inner{
+  width:min(
+    100%,
+    1000px
+  );
+
+  margin:auto;
+}
+
+.sectionNumber{
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:.32em;
+
+  color:var(--terracotta);
+}
+
+.sectionTitle{
+  margin-top:13px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      42px,
+      11vw,
+      78px
+    );
+
+  line-height:.95;
+
+  font-weight:400;
+
+  letter-spacing:-.04em;
+
+  color:var(--navy);
+}
+
+.sectionTitle i{
+  color:var(--terracotta);
+
+  font-weight:400;
+}
+
+.sectionIntro{
+  max-width:570px;
+
+  margin-top:22px;
+
+  color:#6c6861;
+
+  font-size:15px;
+
+  line-height:1.7;
+}
+
+
+/* =========================================================
+   STATUS CARDS
+========================================================= */
+
+.statusGrid{
+  margin-top:38px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      1fr
+    );
+
+  gap:10px;
+}
+
+.statusCard{
+  min-height:130px;
+
+  border-radius:22px;
+
+  padding:19px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:space-between;
+
+  background:
+    rgba(255,255,255,.55);
+
+  border:
+    1px solid
+    rgba(30,42,52,.08);
+}
+
+.statusCard.best{
+  background:var(--navy);
+
+  color:#fff8ef;
+}
+
+.statusCard.maybe{
+  background:#d7b38d;
+}
+
+.statusCard.skip{
+  background:#758c83;
+
+  color:#fff;
+}
+
+.statusTop{
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.18em;
+
+  opacity:.58;
+}
+
+.statusText{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      18px,
+      4vw,
+      25px
+    );
+
+  line-height:1.1;
+}
+
+
+/* =========================================================
+   PLACE CARDS
+========================================================= */
+
+.placeGrid{
+  margin-top:40px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap:15px;
+}
+
+.placeCard{
+  position:relative;
+
+  min-height:290px;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  padding:24px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:flex-end;
+
+  background:var(--navy);
+
+  color:#fff8ef;
+
+  box-shadow:
+    0 20px 50px
+    rgba(31,42,49,.08);
+}
+
+.placeCard.light{
+  background:#e3c9a7;
+
+  color:var(--navy);
+}
+
+.placeCard.green{
+  background:#567363;
+
+  color:#fff;
+}
+
+.placeCard.terra{
+  background:#ad6650;
+
+  color:#fff;
+}
+
+.placeCard.blue{
+  background:#537a89;
+
+  color:#fff;
+}
+
+.placeIcon{
+  position:absolute;
+
+  top:20px;
+  right:22px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:55px;
+
+  opacity:.23;
+}
+
+.placeTag{
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.22em;
+
+  opacity:.65;
+}
+
+.placeTitle{
+  margin-top:11px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      29px,
+      7vw,
+      42px
+    );
+
+  line-height:.95;
+}
+
+.placeText{
+  margin-top:15px;
+
+  font-size:13px;
+
+  line-height:1.6;
+
+  opacity:.77;
+}
+
+.placeBadge{
+  margin-top:16px;
+
+  width:max-content;
+
+  padding:
+    7px 10px;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.14);
+
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.12em;
+}
+
+
+/* =========================================================
+   OCEAN SECTION
+========================================================= */
+
+.oceanSection{
+  background:
+    linear-gradient(
+      160deg,
+      #315c70,
+      #4f7780 55%,
+      #80968b
+    );
+
+  color:white;
+}
+
+.oceanSection .sectionNumber{
+  color:#eacbad;
+}
+
+.oceanSection .sectionTitle{
+  color:#fff9ef;
+}
+
+.oceanSection .sectionIntro{
+  color:
+    rgba(255,255,255,.68);
+}
+
+.activityGrid{
+  margin-top:40px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap:12px;
+}
+
+.activityCard{
+  min-height:180px;
+
+  padding:22px;
+
+  border-radius:24px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.11);
+
+  background:
+    rgba(255,255,255,.07);
+
+  backdrop-filter:blur(10px);
+}
+
+.activityIcon{
+  font-size:30px;
+}
+
+.activityTitle{
+  margin-top:25px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:25px;
+}
+
+.activityText{
+  margin-top:9px;
+
+  color:
+    rgba(255,255,255,.63);
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+.activityStatus{
+  margin-top:17px;
+
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:.17em;
+
+  color:#efd4ba;
+}
+
+
+/* =========================================================
+   FOOD
+========================================================= */
+
+.foodSection{
+  background:#241f1b;
+
+  color:#fff7ee;
+}
+
+.foodSection .sectionNumber{
+  color:#d99e76;
+}
+
+.foodSection .sectionTitle{
+  color:#fff4e8;
+}
+
+.foodSection .sectionIntro{
+  color:
+    rgba(255,255,255,.55);
+}
+
+.foodList{
+  margin-top:42px;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,.10);
+}
+
+.foodItem{
+  display:grid;
+
+  grid-template-columns:
+    55px
+    1fr;
+
+  gap:13px;
+
+  padding:
+    23px 0;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.10);
+}
+
+.foodNumber{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:21px;
+
+  color:#c98b66;
+}
+
+.foodTitle{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:25px;
+}
+
+.foodText{
+  margin-top:5px;
+
+  max-width:550px;
+
+  color:
+    rgba(255,255,255,.52);
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   MOVE
+========================================================= */
+
+.moveGrid{
+  margin-top:38px;
+
+  display:grid;
+
+  gap:11px;
+}
+
+.moveCard{
+  display:grid;
+
+  grid-template-columns:
+    48px
+    1fr;
+
+  gap:16px;
+
+  align-items:start;
+
+  padding:21px;
+
+  border-radius:22px;
+
+  background:
+    rgba(255,255,255,.58);
+
+  border:
+    1px solid
+    rgba(29,40,51,.07);
+}
+
+.moveIcon{
+  width:48px;
+  height:48px;
+
+  border-radius:15px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:var(--navy);
+
+  color:white;
+
+  font-size:20px;
+}
+
+.moveTitle{
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:23px;
+
+  color:var(--navy);
+}
+
+.moveText{
+  margin-top:6px;
+
+  color:#777068;
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+
+/* =========================================================
+   KNOW
+========================================================= */
+
+.knowSection{
+  background:#d9c2a0;
+}
+
+.tipList{
+  margin-top:40px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap:11px;
+}
+
+.tip{
+  min-height:165px;
+
+  padding:21px;
+
+  border-radius:22px;
+
+  background:
+    rgba(255,250,243,.58);
+}
+
+.tipLabel{
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:.18em;
+
+  color:#a15945;
+}
+
+.tipTitle{
+  margin-top:13px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:25px;
+
+  color:var(--navy);
+}
+
+.tipText{
+  margin-top:9px;
+
+  font-size:12px;
+
+  line-height:1.6;
+
+  color:#6f655a;
+}
+
+
+/* =========================================================
+   PHRASES
+========================================================= */
+
+.phraseList{
+  margin-top:40px;
+
+  border-top:
+    1px solid
+    rgba(24,38,55,.12);
+}
+
+.phrase{
+  display:grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap:15px;
+
+  padding:
+    19px 0;
+
+  border-bottom:
+    1px solid
+    rgba(24,38,55,.12);
+}
+
+.phraseEnglish{
+  color:#77716a;
+
+  font-size:12px;
+}
+
+.phraseLocal{
+  text-align:right;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:18px;
+
+  color:var(--navy);
+}
+
+
+/* =========================================================
+   WARNING
+========================================================= */
+
+.warningBox{
+  margin-top:38px;
+
+  padding:25px;
+
+  border-radius:25px;
+
+  background:#ad624c;
+
+  color:white;
+}
+
+.warningLabel{
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:.25em;
+
+  color:#f1c5ad;
+}
+
+.warningTitle{
+  margin-top:12px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      32px,
+      8vw,
+      48px
+    );
+
+  line-height:1;
+}
+
+.warningList{
+  margin-top:24px;
+
+  display:grid;
+
+  gap:12px;
+}
+
+.warningItem{
+  display:flex;
+
+  gap:11px;
+
+  font-size:13px;
+
+  line-height:1.5;
+
+  color:
+    rgba(255,255,255,.75);
+}
+
+.warningItem::before{
+  content:"→";
+
+  color:#ffd7c1;
+}
+
+
+/* =========================================================
+   FINAL PLAN
+========================================================= */
+
+.planSection{
+  background:var(--navy);
+
+  color:white;
+}
+
+.planSection .sectionNumber{
+  color:#d7ab83;
+}
+
+.planSection .sectionTitle{
+  color:#fff8ef;
+}
+
+.planSection .sectionIntro{
+  color:
+    rgba(255,255,255,.57);
+}
+
+.planStack{
+  margin-top:40px;
+
+  display:grid;
+
+  gap:12px;
+}
+
+.planCard{
+  padding:24px;
+
+  border-radius:25px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.10);
+
+  background:
+    rgba(255,255,255,.045);
+}
+
+.planTop{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+}
+
+.planLabel{
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:.20em;
+
+  color:#d8ad89;
+}
+
+.planEmoji{
+  font-size:22px;
+}
+
+.planTitle{
+  margin-top:17px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:29px;
+}
+
+.planText{
+  margin-top:9px;
+
+  font-size:12px;
+
+  line-height:1.65;
+
+  color:
+    rgba(255,255,255,.55);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+  padding:
+    70px 22px
+    calc(
+      env(safe-area-inset-bottom) +
+      45px
+    );
+
+  text-align:center;
+
+  background:#0d1b29;
+
+  color:white;
+}
+
+.footerSmall{
+  font-size:8px;
+
+  font-weight:900;
+
+  letter-spacing:.30em;
+
+  color:#c59c78;
+}
+
+.footerTitle{
+  margin-top:17px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      44px,
+      12vw,
+      76px
+    );
+
+  line-height:.9;
+}
+
+.footerTitle span{
+  color:#d5a983;
+
+  font-style:italic;
+}
+
+.footerText{
+  margin-top:24px;
+
+  font-size:13px;
+
+  color:
+    rgba(255,255,255,.45);
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+  opacity:0;
+
+  transform:
+    translateY(28px);
+
+  transition:
+    opacity .8s ease,
+    transform .8s ease;
+}
+
+.reveal.visible{
+  opacity:1;
+
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(
+  max-width:700px
+){
+
+  .statusGrid{
+    grid-template-columns:1fr;
+  }
+
+  .placeGrid{
+    grid-template-columns:1fr;
+  }
+
+  .placeCard{
+    min-height:250px;
+  }
+
+  .activityGrid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .tipList{
+    grid-template-columns:1fr;
+  }
+
+}
+
+
+@media(
+  max-width:430px
+){
+
+  .activityGrid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+  <div class="sun"></div>
+
+  <div class="wave one"></div>
+  <div class="wave two"></div>
+  <div class="wave three"></div>
+
+
+  <div class="heroTop">
+
+    <div class="heroTag">
+      Pocket Guide
+    </div>
+
+    <div class="heroDates">
+      14—21 OCT
+    </div>
+
+  </div>
+
+
+  <div class="heroContent">
+
+    <div class="heroEyebrow">
+      Morocco · Atlantic Coast
+    </div>
+
+    <h1 class="heroTitle">
+
+      CASA
+
+      <span>
+        BLANCA
+      </span>
+
+    </h1>
+
+
+    <div class="heroText">
+
+      Yes, technically we're here
+      for <strong>fencing.</strong>
+
+      <br><br>
+
+      Fortunately, there's an entire
+      city outside the competition venue.
+
+    </div>
+
+
+    <div class="scrollLine">
+      EVERYTHING WE ACTUALLY NEED
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     QUICK NAV
+========================================================= -->
+
+<nav class="quickWrap">
+
+  <div class="quickNav">
+
+    <a
+      class="quickButton dark"
+      href="#worth"
+    >
+      START HERE
+    </a>
+
+    <a
+      class="quickButton"
+      href="#see"
+    >
+      SEE
+    </a>
+
+    <a
+      class="quickButton"
+      href="#ocean"
+    >
+      OCEAN
+    </a>
+
+    <a
+      class="quickButton"
+      href="#eat"
+    >
+      EAT
+    </a>
+
+    <a
+      class="quickButton"
+      href="#move"
+    >
+      MOVE
+    </a>
+
+    <a
+      class="quickButton"
+      href="#know"
+    >
+      KNOW
+    </a>
+
+    <a
+      class="quickButton"
+      href="#phrases"
+    >
+      WORDS
+    </a>
+
+  </div>
+
+</nav>
+
+
+<!-- =========================================================
+     WORTH IT
+========================================================= -->
+
+<section
+  class="section"
+  id="worth"
+>
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      01 · THE SHORT VERSION
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      What is actually
+
+      <i>
+        worth it?
+      </i>
+
+    </h2>
+
+
+    <div class="sectionIntro reveal">
+
+      Because after training, competition,
+      travelling and probably being tired,
+      we're not pretending every attraction
+      deserves three hours of our life.
+
+    </div>
+
+
+    <div class="statusGrid">
+
+
+      <div class="statusCard best reveal">
+
+        <div class="statusTop">
+          ACTUALLY WORTH IT
+        </div>
+
+        <div class="statusText">
+          Hassan II Mosque + Corniche
+        </div>
+
+      </div>
+
+
+      <div class="statusCard maybe reveal">
+
+        <div class="statusTop">
+          IF WE HAVE ENERGY
+        </div>
+
+        <div class="statusText">
+          Habous + Old Medina
+        </div>
+
+      </div>
+
+
+      <div class="statusCard skip reveal">
+
+        <div class="statusTop">
+          IF WE HAVE TIME
+        </div>
+
+        <div class="statusText">
+          Mall, hammam, surf & extras
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SEE
+========================================================= -->
+
+<section
+  class="section"
+  id="see"
+>
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      02 · SEE
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      Casablanca
+
+      <i>
+        essentials.
+      </i>
+
+    </h2>
+
+
+    <div class="sectionIntro reveal">
+
+      Not fifty landmarks.
+      Just the places that actually make
+      sense for a few days in the city.
+
+    </div>
+
+
+    <div class="placeGrid">
+
+
+      <div class="placeCard reveal">
+
+        <div class="placeIcon">
+          ☾
+        </div>
+
+        <div class="placeTag">
+          MUST SEE
+        </div>
+
+        <div class="placeTitle">
+          Hassan II Mosque
+        </div>
+
+        <div class="placeText">
+
+          Casablanca's landmark,
+          sitting dramatically beside
+          the Atlantic.
+
+          Go around sunset if possible.
+
+        </div>
+
+        <div class="placeBadge">
+          PRIORITY #1
+        </div>
+
+      </div>
+
+
+      <div class="placeCard blue reveal">
+
+        <div class="placeIcon">
+          ≋
+        </div>
+
+        <div class="placeTag">
+          OCEAN
+        </div>
+
+        <div class="placeTitle">
+          Aïn Diab Corniche
+        </div>
+
+        <div class="placeText">
+
+          Long oceanfront stretch with
+          cafés, restaurants, clubs,
+          beach areas and sunset walks.
+
+        </div>
+
+        <div class="placeBadge">
+          EASY + RELAXED
+        </div>
+
+      </div>
+
+
+      <div class="placeCard light reveal">
+
+        <div class="placeIcon">
+          ◇
+        </div>
+
+        <div class="placeTag">
+          OLD CASABLANCA
+        </div>
+
+        <div class="placeTitle">
+          Old Medina
+        </div>
+
+        <div class="placeText">
+
+          Narrow streets,
+          local shops and a more
+          traditional side of the city.
+
+        </div>
+
+        <div class="placeBadge">
+          WALK AROUND
+        </div>
+
+      </div>
+
+
+      <div class="placeCard green reveal">
+
+        <div class="placeIcon">
+          ✦
+        </div>
+
+        <div class="placeTag">
+          DIFFERENT VIBE
+        </div>
+
+        <div class="placeTitle">
+          Habous
+        </div>
+
+        <div class="placeText">
+
+          Arches, traditional shops,
+          calmer streets and a much
+          more photogenic atmosphere.
+
+        </div>
+
+        <div class="placeBadge">
+          GOOD FOR A SLOW MORNING
+        </div>
+
+      </div>
+
+
+      <div class="placeCard terra reveal">
+
+        <div class="placeIcon">
+          ◫
+        </div>
+
+        <div class="placeTag">
+          CITY CENTRE
+        </div>
+
+        <div class="placeTitle">
+          Art Deco Centre
+        </div>
+
+        <div class="placeText">
+
+          Central Casablanca has a very
+          different architectural identity:
+          wide boulevards, old façades,
+          cafés and city energy.
+
+        </div>
+
+        <div class="placeBadge">
+          COMBINE WITH LUNCH
+        </div>
+
+      </div>
+
+
+      <div class="placeCard reveal">
+
+        <div class="placeIcon">
+          +
+        </div>
+
+        <div class="placeTag">
+          OPTIONAL
+        </div>
+
+        <div class="placeTitle">
+          Morocco Mall
+        </div>
+
+        <div class="placeText">
+
+          Huge modern shopping centre
+          near the coast.
+
+          Not why we came to Morocco,
+          but useful if the weather is bad
+          or we want an easy evening.
+
+        </div>
+
+        <div class="placeBadge">
+          ONLY IF WE FEEL LIKE IT
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     OCEAN
+========================================================= -->
+
+<section
+  class="section oceanSection"
+  id="ocean"
+>
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      03 · ATLANTIC
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      Things we
+
+      <i>
+        could do.
+      </i>
+
+    </h2>
+
+
+    <div class="sectionIntro reveal">
+
+      Some realistic.
+      Some optimistic.
+      Some included simply because
+      we're next to the Atlantic
+      and it would be rude not to consider them.
+
+    </div>
+
+
+    <div class="activityGrid">
+
+
+      <div class="activityCard reveal">
+
+        <div class="activityIcon">
+          🏄
+        </div>
+
+        <div class="activityTitle">
+          Surf
+        </div>
+
+        <div class="activityText">
+
+          Casablanca's coast and nearby
+          Dar Bouazza have ocean sports.
+
+          Check conditions and operators
+          locally before booking.
+
+        </div>
+
+        <div class="activityStatus">
+          MAYBE
+        </div>
+
+      </div>
+
+
+      <div class="activityCard reveal">
+
+        <div class="activityIcon">
+          🌊
+        </div>
+
+        <div class="activityTitle">
+          Aïn Diab
+        </div>
+
+        <div class="activityText">
+
+          The easy option:
+          beach, coffee,
+          walk by the Atlantic,
+          sunset.
+
+        </div>
+
+        <div class="activityStatus">
+          VERY REALISTIC
+        </div>
+
+      </div>
+
+
+      <div class="activityCard reveal">
+
+        <div class="activityIcon">
+          💨
+        </div>
+
+        <div class="activityTitle">
+          Windsurfing
+        </div>
+
+        <div class="activityText">
+
+          One of the water activities
+          promoted around Aïn Diab.
+
+          Completely optional,
+          obviously.
+
+        </div>
+
+        <div class="activityStatus">
+          OPTIMISTIC
+        </div>
+
+      </div>
+
+
+      <div class="activityCard reveal">
+
+        <div class="activityIcon">
+          🚤
+        </div>
+
+        <div class="activityTitle">
+          Jet Ski
+        </div>
+
+        <div class="activityText">
+
+          Another Atlantic option
+          around the beach complexes.
+
+          Price and availability
+          depend on the operator.
+
+        </div>
+
+        <div class="activityStatus">
+          CHAOTIC OPTION
+        </div>
+
+      </div>
+
+
+      <div class="activityCard reveal">
+
+        <div class="activityIcon">
+          ☀
+        </div>
+
+        <div class="activityTitle">
+          Dar Bouazza
+        </div>
+
+        <div class="activityText">
+
+          Coastal area outside central
+          Casablanca with beaches
+          and private beach spots.
+
+        </div>
+
+        <div class="activityStatus">
+          HALF-DAY IDEA
+        </div>
+
+      </div>
+
+
+      <div class="activityCard reveal">
+
+        <div class="activityIcon">
+          ◐
+        </div>
+
+        <div class="activityTitle">
+          Sunset
+        </div>
+
+        <div class="activityText">
+
+          Requires no booking,
+          no energy,
+          no athletic ability.
+
+          Strong candidate.
+
+        </div>
+
+        <div class="activityStatus">
+          YES
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOD
+========================================================= -->
+
+<section
+  class="section foodSection"
+  id="eat"
+>
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      04 · EAT
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      What we need
+
+      <i>
+        to try.
+      </i>
+
+    </h2>
+
+
+    <div class="sectionIntro reveal">
+
+      The part of the trip
+      that requires the least convincing.
+
+    </div>
+
+
+    <div class="foodList">
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          01
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Tagine
+          </div>
+
+          <div class="foodText">
+
+            Slow-cooked meat or vegetables
+            with spices, olives,
+            preserved lemon
+            and plenty of variations.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          02
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Pastilla
+          </div>
+
+          <div class="foodText">
+
+            Flaky pastry with
+            a sweet-savoury combination.
+
+            One of those things
+            that sounds strange
+            until it works.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          03
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Msemen
+          </div>
+
+          <div class="foodText">
+
+            Moroccan layered flatbread.
+
+            Breakfast,
+            snack,
+            emergency food.
+            We support all three.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          04
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Harira
+          </div>
+
+          <div class="foodText">
+
+            Traditional Moroccan soup
+            usually made with tomato,
+            legumes, herbs and spices.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          05
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Couscous
+          </div>
+
+          <div class="foodText">
+
+            The obvious one.
+            Still needs to happen
+            at least once.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          06
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Fresh fish
+          </div>
+
+          <div class="foodText">
+
+            Atlantic city.
+            This would be
+            a ridiculous category
+            to ignore.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          07
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Mint tea
+          </div>
+
+          <div class="foodText">
+
+            Not optional.
+
+            Also possibly
+            much sweeter
+            than expected.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="foodItem reveal">
+
+        <div class="foodNumber">
+          08
+        </div>
+
+        <div>
+
+          <div class="foodTitle">
+            Moroccan pastries
+          </div>
+
+          <div class="foodText">
+
+            Almonds,
+            honey,
+            sesame,
+            pastry.
+
+            Training nutrition
+            can look away.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     MOVE
+========================================================= -->
+
+<section
+  class="section"
+  id="move"
+>
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      05 · MOVE
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      Getting
+
+      <i>
+        around.
+      </i>
+
+    </h2>
+
+
+    <div class="sectionIntro reveal">
+
+      Casablanca is large.
+      Walking works within areas,
+      but not for everything.
+
+    </div>
+
+
+    <div class="moveGrid">
+
+
+      <div class="moveCard reveal">
+
+        <div class="moveIcon">
+          🚕
+        </div>
+
+        <div>
+
+          <div class="moveTitle">
+            Petit taxi
+          </div>
+
+          <div class="moveText">
+
+            Good for shorter city trips.
+
+            Confirm the meter or price
+            situation before setting off
+            and keep small cash available.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="moveCard reveal">
+
+        <div class="moveIcon">
+          🚋
+        </div>
+
+        <div>
+
+          <div class="moveTitle">
+            Tramway
+          </div>
+
+          <div class="moveText">
+
+            Useful for several parts
+            of the city and often easier
+            than dealing with traffic.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="moveCard reveal">
+
+        <div class="moveIcon">
+          🚌
+        </div>
+
+        <div>
+
+          <div class="moveTitle">
+            Busway
+          </div>
+
+          <div class="moveText">
+
+            Casablanca also has
+            dedicated Busway lines
+            connected with the wider
+            public transport network.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="moveCard reveal">
+
+        <div class="moveIcon">
+          🚆
+        </div>
+
+        <div>
+
+          <div class="moveTitle">
+            Casa Voyageurs
+          </div>
+
+          <div class="moveText">
+
+            Main rail station
+            and useful reference point
+            if travelling onward
+            or arriving by train.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="moveCard reveal">
+
+        <div class="moveIcon">
+          🚶
+        </div>
+
+        <div>
+
+          <div class="moveTitle">
+            Walking
+          </div>
+
+          <div class="moveText">
+
+            Best once we're already
+            inside the area we want
+            to explore:
+            Habous, Medina,
+            centre, Corniche.
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     KNOW
+========================================================= -->
+
+<section
+  class="section knowSection"
+  id="know"
+>
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      06 · KNOW BEFORE
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      Small things.
+
+      <i>
+        Big difference.
+      </i>
+
+    </h2>
+
+
+    <div class="tipList">
+
+
+      <div class="tip reveal">
+
+        <div class="tipLabel">
+          MONEY
+        </div>
+
+        <div class="tipTitle">
+          Keep cash.
+        </div>
+
+        <div class="tipText">
+
+          Cards are useful,
+          but small purchases,
+          taxis and local shops
+          can still be easier
+          with Moroccan dirhams.
+
+        </div>
+
+      </div>
+
+
+      <div class="tip reveal">
+
+        <div class="tipLabel">
+          DATA
+        </div>
+
+        <div class="tipTitle">
+          Have internet.
+        </div>
+
+        <div class="tipText">
+
+          Maps, translations
+          and transport are
+          dramatically easier
+          with mobile data.
+
+          SIM or eSIM before
+          becoming desperate.
+
+        </div>
+
+      </div>
+
+
+      <div class="tip reveal">
+
+        <div class="tipLabel">
+          TAXIS
+        </div>
+
+        <div class="tipTitle">
+          Agree first.
+        </div>
+
+        <div class="tipText">
+
+          Check meter / fare expectations
+          before leaving.
+
+          Avoid discovering the price
+          only at the destination.
+
+        </div>
+
+      </div>
+
+
+      <div class="tip reveal">
+
+        <div class="tipLabel">
+          SHOPPING
+        </div>
+
+        <div class="tipTitle">
+          Prices are flexible.
+        </div>
+
+        <div class="tipText">
+
+          In markets,
+          bargaining can be part
+          of the experience.
+
+          Stay friendly
+          and walk away
+          if the price feels wrong.
+
+        </div>
+
+      </div>
+
+
+      <div class="tip reveal">
+
+        <div class="tipLabel">
+          WATER
+        </div>
+
+        <div class="tipTitle">
+          Easy option: bottled.
+        </div>
+
+        <div class="tipText">
+
+          Especially when travelling
+          and competing,
+          keep hydration simple
+          and predictable.
+
+        </div>
+
+      </div>
+
+
+      <div class="tip reveal">
+
+        <div class="tipLabel">
+          OCEAN
+        </div>
+
+        <div class="tipTitle">
+          Atlantic means Atlantic.
+        </div>
+
+        <div class="tipText">
+
+          Waves, currents
+          and conditions matter.
+
+          For surf / water sports,
+          use a proper operator
+          and check the conditions.
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="warningBox reveal">
+
+      <div class="warningLabel">
+        KEEP IN MIND
+      </div>
+
+      <div class="warningTitle">
+        Tourist common sense.
+      </div>
+
+
+      <div class="warningList">
+
+        <div class="warningItem">
+          Don't follow random “guides”
+          who suddenly decide to help.
+        </div>
+
+        <div class="warningItem">
+          Check taxi expectations
+          before the ride.
+        </div>
+
+        <div class="warningItem">
+          Don't flash cash
+          or valuables unnecessarily.
+        </div>
+
+        <div class="warningItem">
+          Busy markets:
+          phone and bag awareness.
+        </div>
+
+        <div class="warningItem">
+          If something feels strangely
+          complicated, leave.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PHRASES
+========================================================= -->
+
+<section
+  class="section"
+  id="phrases"
+>
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      07 · USEFUL WORDS
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      Enough to
+
+      <i>
+        survive.
+      </i>
+
+    </h2>
+
+
+    <div class="sectionIntro reveal">
+
+      French is extremely useful
+      in Casablanca.
+
+      These are the ones
+      we're actually likely to need.
+
+    </div>
+
+
+    <div class="phraseList">
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          Hello
+        </div>
+
+        <div class="phraseLocal">
+          Bonjour
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          Thank you
+        </div>
+
+        <div class="phraseLocal">
+          Merci
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          Please
+        </div>
+
+        <div class="phraseLocal">
+          S'il vous plaît
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          How much?
+        </div>
+
+        <div class="phraseLocal">
+          C'est combien ?
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          Too expensive
+        </div>
+
+        <div class="phraseLocal">
+          C'est trop cher
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          Where is…?
+        </div>
+
+        <div class="phraseLocal">
+          Où est… ?
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          Water
+        </div>
+
+        <div class="phraseLocal">
+          De l'eau
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          The bill, please
+        </div>
+
+        <div class="phraseLocal">
+          L'addition, s'il vous plaît
+        </div>
+
+      </div>
+
+
+      <div class="phrase reveal">
+
+        <div class="phraseEnglish">
+          No, thank you
+        </div>
+
+        <div class="phraseLocal">
+          Non merci
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SIMPLE PLAN
+========================================================= -->
+
+<section class="section planSection">
+
+  <div class="inner">
+
+    <div class="sectionNumber reveal">
+      08 · WHEN WE HAVE FREE TIME
+    </div>
+
+
+    <h2 class="sectionTitle reveal">
+
+      No itinerary.
+
+      <i>
+        Just options.
+      </i>
+
+    </h2>
+
+
+    <div class="sectionIntro reveal">
+
+      Pick whatever fits
+      the amount of energy left
+      after fencing.
+
+    </div>
+
+
+    <div class="planStack">
+
+
+      <div class="planCard reveal">
+
+        <div class="planTop">
+
+          <div class="planLabel">
+            1–2 FREE HOURS
+          </div>
+
+          <div class="planEmoji">
+            ☕
+          </div>
+
+        </div>
+
+        <div class="planTitle">
+          Corniche + coffee
+        </div>
+
+        <div class="planText">
+
+          Zero complicated planning.
+          Go to the ocean,
+          walk,
+          eat something,
+          return.
+
+        </div>
+
+      </div>
+
+
+      <div class="planCard reveal">
+
+        <div class="planTop">
+
+          <div class="planLabel">
+            HALF DAY
+          </div>
+
+          <div class="planEmoji">
+            ☾
+          </div>
+
+        </div>
+
+        <div class="planTitle">
+          Mosque + Medina
+        </div>
+
+        <div class="planText">
+
+          Hassan II Mosque,
+          walk around the coast,
+          then Old Medina
+          or the centre.
+
+        </div>
+
+      </div>
+
+
+      <div class="planCard reveal">
+
+        <div class="planTop">
+
+          <div class="planLabel">
+            CALM DAY
+          </div>
+
+          <div class="planEmoji">
+            ✦
+          </div>
+
+        </div>
+
+        <div class="planTitle">
+          Habous + food
+        </div>
+
+        <div class="planText">
+
+          Slow morning,
+          wander around Habous,
+          local shops,
+          then proper Moroccan lunch.
+
+        </div>
+
+      </div>
+
+
+      <div class="planCard reveal">
+
+        <div class="planTop">
+
+          <div class="planLabel">
+            UNEXPECTED ENERGY
+          </div>
+
+          <div class="planEmoji">
+            🏄
+          </div>
+
+        </div>
+
+        <div class="planTitle">
+          Atlantic day
+        </div>
+
+        <div class="planText">
+
+          Aïn Diab or Dar Bouazza.
+
+          Beach,
+          water activity,
+          maybe surf,
+          sunset.
+
+        </div>
+
+      </div>
+
+
+      <div class="planCard reveal">
+
+        <div class="planTop">
+
+          <div class="planLabel">
+            ABSOLUTELY EXHAUSTED
+          </div>
+
+          <div class="planEmoji">
+            🫠
+          </div>
+
+        </div>
+
+        <div class="planTitle">
+          Eat and go home.
+        </div>
+
+        <div class="planText">
+
+          Also a completely valid
+          Casablanca experience.
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+  <div class="footerSmall">
+    MOROCCO · ATLANTIC · OCTOBER
+  </div>
+
+
+  <div class="footerTitle">
+
+    Came for fencing.
+
+    <br>
+
+    <span>
+      Staying for Casablanca.
+    </span>
+
+  </div>
+
+
+  <div class="footerText">
+
+    No strict schedule.
+    Just a list of better options.
+
+  </div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealItems =
+document.querySelectorAll(
+  ".reveal"
+);
+
+
+const observer =
+new IntersectionObserver(
+
+  entries=>{
+
+    entries.forEach(
+      entry=>{
+
+        if(
+          entry.isIntersecting
+        ){
+
+          entry.target
+          .classList
+          .add(
+            "visible"
+          );
+
+
+          observer.unobserve(
+            entry.target
+          );
+
+        }
+
+      }
+    );
+
+  },
+
+  {
+    threshold:.12
+  }
+
+);
+
+
+revealItems.forEach(
+  item=>{
+
+    observer.observe(
+      item
+    );
+
+  }
+);
+
+</script>
+
+
+</body>
+
+</html>
