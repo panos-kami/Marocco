@@ -1,1264 +1,796 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
-<title>Casablanca</title>
-
-<style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  overflow-x:hidden;
-
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
-  background:#efe8dc;
-
-  color:#172738;
-}
-
-
-/* =========================================================
-   COLORS
-========================================================= */
-
-:root{
-
-  --cream:#f3ede3;
-  --paper:#fffaf3;
-
-  --navy:#112538;
-  --navy2:#1e3f54;
-
-  --ocean:#4f7d87;
-
-  --sand:#d8bea0;
-
-  --terra:#b56c50;
-
-  --green:#607a67;
-
-  --pink:#d9a7a2;
-
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero{
-  min-height:100svh;
-
-  position:relative;
-
-  display:flex;
-
-  align-items:flex-end;
-
-  overflow:hidden;
-
-  padding:
-    calc(env(safe-area-inset-top) + 35px)
-    22px
-    calc(env(safe-area-inset-bottom) + 48px);
-
-  background:
-    radial-gradient(
-      circle at 82% 13%,
-      rgba(236,197,155,.28),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 12% 87%,
-      rgba(77,125,137,.35),
-      transparent 37%
-    ),
-    linear-gradient(
-      150deg,
-      #0d1f31 0%,
-      #244a5e 55%,
-      #6f857e 100%
-    );
-
-  color:white;
-}
-
-.sun{
-  position:absolute;
-
-  width:210px;
-  height:210px;
-
-  top:8%;
-  right:-45px;
-
-  border-radius:50%;
-
-  border:
-    1px solid
-    rgba(255,239,220,.15);
-
-  background:
-    rgba(236,192,145,.16);
-
-  box-shadow:
-    0 0 90px
-    rgba(230,180,134,.12);
-}
-
-.wave{
-  position:absolute;
-
-  left:-10%;
-
-  width:120%;
-
-  border:
-    1px solid
-    rgba(255,255,255,.07);
-
-  border-radius:50%;
-}
-
-.wave.one{
-  height:300px;
-  bottom:15%;
-}
-
-.wave.two{
-  height:390px;
-  bottom:8%;
-}
-
-.wave.three{
-  height:470px;
-  bottom:1%;
-}
-
-
-/* HERO TOP */
-
-.heroTop{
-  position:absolute;
-
-  top:
-    calc(
-      env(safe-area-inset-top) +
-      20px
-    );
-
-  left:22px;
-  right:22px;
-
-  display:flex;
-
-  justify-content:space-between;
-
-  align-items:center;
-
-  z-index:3;
-}
-
-.heroSmall{
-  font-size:8px;
-
-  font-weight:800;
-
-  letter-spacing:.27em;
-
-  color:
-    rgba(255,255,255,.62);
-}
-
-.heroDate{
-  padding:
-    8px 12px;
-
-  border-radius:999px;
-
-  background:
-    rgba(255,255,255,.07);
-
-  border:
-    1px solid
-    rgba(255,255,255,.13);
-
-  font-size:9px;
-
-  letter-spacing:.13em;
-}
-
-
-/* HERO TEXT */
-
-.heroContent{
-  position:relative;
-
-  z-index:3;
-
-  max-width:850px;
-}
-
-.heroEyebrow{
-  font-size:8px;
-
-  font-weight:900;
-
-  letter-spacing:.34em;
-
-  color:#e6c2a0;
-}
-
-.heroTitle{
-  margin-top:17px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      64px,
-      18vw,
-      130px
-    );
-
-  line-height:.79;
-
-  font-weight:400;
-
-  letter-spacing:-.06em;
-
-  color:#fff7ed;
-}
-
-.heroTitle span{
-  display:block;
-
-  margin-top:15px;
-
-  color:#e9c4a2;
-
-  font-style:italic;
-}
-
-.heroText{
-  max-width:560px;
-
-  margin-top:28px;
-
-  font-size:
-    clamp(
-      17px,
-      4vw,
-      22px
-    );
-
-  line-height:1.55;
-
-  color:
-    rgba(255,247,237,.72);
-}
-
-.heroText strong{
-  color:#fff8ee;
-}
-
-.heroScroll{
-  margin-top:38px;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  font-size:8px;
-
-  font-weight:900;
-
-  letter-spacing:.23em;
-
-  color:
-    rgba(255,255,255,.40);
-}
-
-.heroScroll::before{
-  content:"";
-
-  width:38px;
-  height:1px;
-
-  background:
-    rgba(255,255,255,.28);
-}
-
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-.section{
-  padding:
-    82px 20px;
-}
-
-.inner{
-  width:min(100%,980px);
-
-  margin:auto;
-}
-
-.label{
-  font-size:8px;
-
-  font-weight:900;
-
-  letter-spacing:.30em;
-
-  color:var(--terra);
-}
-
-.title{
-  margin-top:13px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      43px,
-      11vw,
-      78px
-    );
-
-  line-height:.94;
-
-  font-weight:400;
-
-  letter-spacing:-.04em;
-
-  color:var(--navy);
-}
-
-.title i{
-  color:var(--terra);
-
-  font-weight:400;
-}
-
-.intro{
-  max-width:580px;
-
-  margin-top:20px;
-
-  font-size:14px;
-
-  line-height:1.75;
-
-  color:#777068;
-}
-
-
-/* =========================================================
-   REALISTIC PLANS
-========================================================= */
-
-.choiceGrid{
-  margin-top:38px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      1fr
-    );
-
-  gap:11px;
-}
-
-.choice{
-  min-height:175px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:space-between;
-
-  padding:20px;
-
-  border-radius:24px;
-}
-
-.choice.one{
-  background:var(--navy);
-
-  color:white;
-}
-
-.choice.two{
-  background:var(--sand);
-
-  color:var(--navy);
-}
-
-.choice.three{
-  background:var(--green);
-
-  color:white;
-}
-
-.choiceSmall{
-  font-size:8px;
-
-  font-weight:900;
-
-  letter-spacing:.19em;
-
-  opacity:.60;
-}
-
-.choiceTitle{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      21px,
-      5vw,
-      30px
-    );
-
-  line-height:1.1;
-}
-
-
-/* =========================================================
-   MUST DO
-========================================================= */
-
-.cards{
-  margin-top:40px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      1fr
-    );
-
-  gap:14px;
-}
-
-.card{
-  min-height:290px;
-
-  position:relative;
-
-  overflow:hidden;
-
-  padding:23px;
-
-  border-radius:29px;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:flex-end;
-
-  color:white;
-
-  background:var(--navy);
-}
-
-.card.ocean{
-  background:#4b7986;
-}
-
-.card.sand{
-  background:#d8b993;
-
-  color:var(--navy);
-}
-
-.card.terra{
-  background:#b36a50;
-}
-
-.card.green{
-  background:#617968;
-}
-
-.card.dark{
-  background:#27252a;
-}
-
-.cardHuge{
-  position:absolute;
-
-  right:18px;
-  top:14px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:70px;
-
-  opacity:.15;
-}
-
-.cardLabel{
-  font-size:8px;
-
-  font-weight:900;
-
-  letter-spacing:.22em;
-
-  opacity:.61;
-}
-
-.cardTitle{
-  margin-top:10px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      28px,
-      7vw,
-      42px
-    );
-
-  line-height:.96;
-}
-
-.cardText{
-  margin-top:13px;
-
-  max-width:430px;
-
-  font-size:12px;
-
-  line-height:1.65;
-
-  opacity:.74;
-}
-
-
-/* =========================================================
-   FENCING INTERRUPTION
-========================================================= */
-
-.fencing{
-  background:
-    linear-gradient(
-      155deg,
-      #171a1d,
-      #27262b
-    );
-
-  color:white;
-}
-
-.fencing .label{
-  color:#d4a48d;
-}
-
-.fencing .title{
-  color:#fff5ea;
-}
-
-.fencing .intro{
-  color:
-    rgba(255,255,255,.56);
-}
-
-.energyGrid{
-  margin-top:40px;
-
-  display:grid;
-
-  gap:10px;
-}
-
-.energy{
-  display:grid;
-
-  grid-template-columns:
-    70px
-    1fr;
-
-  gap:17px;
-
-  align-items:center;
-
-  padding:
-    19px 21px;
-
-  border-radius:20px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  background:
-    rgba(255,255,255,.035);
-}
-
-.energyLevel{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:27px;
-
-  color:#dfa98d;
-}
-
-.energyText{
-  font-size:13px;
-
-  line-height:1.5;
-
-  color:
-    rgba(255,255,255,.67);
-}
-
-
-/* =========================================================
-   OCEAN
-========================================================= */
-
-.atlantic{
-  background:
-    linear-gradient(
-      160deg,
-      #315e71,
-      #557f87 58%,
-      #82998e
-    );
-
-  color:white;
-}
-
-.atlantic .label{
-  color:#f0d1b2;
-}
-
-.atlantic .title{
-  color:white;
-}
-
-.atlantic .intro{
-  color:
-    rgba(255,255,255,.63);
-}
-
-.oceanGrid{
-  margin-top:38px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      1fr
-    );
-
-  gap:11px;
-}
-
-.oceanCard{
-  min-height:190px;
-
-  padding:22px;
-
-  border-radius:24px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.11);
-
-  background:
-    rgba(255,255,255,.06);
-}
-
-.oceanEmoji{
-  font-size:28px;
-}
-
-.oceanTitle{
-  margin-top:22px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:26px;
-}
-
-.oceanText{
-  margin-top:8px;
-
-  font-size:12px;
-
-  line-height:1.6;
-
-  color:
-    rgba(255,255,255,.62);
-}
-
-
-/* =========================================================
-   FOOD
-========================================================= */
-
-.food{
-  background:#221f1b;
-
-  color:white;
-}
-
-.food .label{
-  color:#d99c75;
-}
-
-.food .title{
-  color:#fff4e7;
-}
-
-.food .intro{
-  color:
-    rgba(255,255,255,.52);
-}
-
-.foodList{
-  margin-top:38px;
-
-  border-top:
-    1px solid
-    rgba(255,255,255,.10);
-}
-
-.foodItem{
-  display:grid;
-
-  grid-template-columns:
-    55px
-    1fr;
-
-  gap:12px;
-
-  padding:
-    22px 0;
-
-  border-bottom:
-    1px solid
-    rgba(255,255,255,.09);
-}
-
-.foodNo{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  color:#cc8e68;
-
-  font-size:20px;
-}
-
-.foodName{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:26px;
-}
-
-.foodDesc{
-  margin-top:5px;
-
-  font-size:12px;
-
-  line-height:1.6;
-
-  color:
-    rgba(255,255,255,.48);
-}
-
-
-/* =========================================================
-   PERFECT DAY
-========================================================= */
-
-.day{
-  background:#d9bea0;
-}
-
-.timeline{
-  margin-top:42px;
-
-  display:grid;
-
-  gap:12px;
-}
-
-.timeCard{
-  display:grid;
-
-  grid-template-columns:
-    68px
-    1fr;
-
-  gap:17px;
-
-  align-items:start;
-
-  padding:20px;
-
-  border-radius:22px;
-
-  background:
-    rgba(255,250,243,.58);
-}
-
-.time{
-  font-size:9px;
-
-  font-weight:900;
-
-  letter-spacing:.12em;
-
-  color:#a05e48;
-}
-
-.timeTitle{
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:24px;
-
-  color:var(--navy);
-}
-
-.timeText{
-  margin-top:6px;
-
-  font-size:12px;
-
-  line-height:1.55;
-
-  color:#746a60;
-}
-
-
-/* =========================================================
-   ABSOLUTELY NOT
-========================================================= */
-
-.notDoing{
-  background:#b7674f;
-
-  color:white;
-}
-
-.notDoing .label{
-  color:#f4cdbb;
-}
-
-.notDoing .title{
-  color:white;
-}
-
-.notDoing .intro{
-  color:
-    rgba(255,255,255,.61);
-}
-
-.notList{
-  margin-top:38px;
-
-  display:grid;
-
-  gap:10px;
-}
-
-.notItem{
-  padding:19px 20px;
-
-  border-radius:20px;
-
-  background:
-    rgba(255,255,255,.08);
-
-  border:
-    1px solid
-    rgba(255,255,255,.10);
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      19px,
-      5vw,
-      27px
-    );
-
-  line-height:1.2;
-}
-
-
-/* =========================================================
-   CHAOTIC OPTION
-========================================================= */
-
-.chaos{
-  background:
-    linear-gradient(
-      145deg,
-      #102638,
-      #315a68 58%,
-      #845e58
-    );
-
-  color:white;
-}
-
-.chaos .label{
-  color:#e4b89b;
-}
-
-.chaos .title{
-  color:white;
-}
-
-.chaosBox{
-  margin-top:38px;
-
-  min-height:310px;
-
-  position:relative;
-
-  overflow:hidden;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:flex-end;
-
-  padding:25px;
-
-  border-radius:30px;
-
-  background:
-    rgba(255,255,255,.07);
-
-  border:
-    1px solid
-    rgba(255,255,255,.11);
-}
-
-.chaosBig{
-  position:absolute;
-
-  top:-20px;
-  right:-4px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      120px,
-      34vw,
-      250px
-    );
-
-  color:
-    rgba(255,255,255,.035);
-}
-
-.chaosSmall{
-  font-size:8px;
-
-  font-weight:900;
-
-  letter-spacing:.23em;
-
-  color:#e6b99a;
-}
-
-.chaosTitle{
-  margin-top:12px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      39px,
-      10vw,
-      68px
-    );
-
-  line-height:.95;
-}
-
-.chaosText{
-  max-width:550px;
-
-  margin-top:16px;
-
-  font-size:13px;
-
-  line-height:1.7;
-
-  color:
-    rgba(255,255,255,.63);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer{
-  padding:
-    80px 22px
-    calc(
-      env(safe-area-inset-bottom) +
-      50px
-    );
-
-  text-align:center;
-
-  background:#0b1a28;
-
-  color:white;
-}
-
-.footerSmall{
-  font-size:8px;
-
-  font-weight:900;
-
-  letter-spacing:.31em;
-
-  color:#c9a07e;
-}
-
-.footerTitle{
-  margin-top:18px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size:
-    clamp(
-      43px,
-      12vw,
-      76px
-    );
-
-  line-height:.90;
-}
-
-.footerTitle span{
-  display:block;
-
-  margin-top:10px;
-
-  color:#dfb38f;
-
-  font-style:italic;
-}
-
-.footerText{
-  margin-top:23px;
-
-  font-size:12px;
-
-  color:
-    rgba(255,255,255,.40);
-}
-
-
-/* =========================================================
-   REVEAL
-========================================================= */
-
-.reveal{
-  opacity:0;
-
-  transform:
-    translateY(28px);
-
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-
-.reveal.visible{
-  opacity:1;
-
-  transform:
-    translateY(0);
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:700px){
-
-  .choiceGrid{
-    grid-template-columns:1fr;
-  }
-
-  .cards{
-    grid-template-columns:1fr;
-  }
-
-  .oceanGrid{
-    grid-template-columns:1fr;
-  }
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <title>Casablanca, With You</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #0d1a26;
+      color: #fffaf2;
+    }
+
+    :root {
+      --cream: #f6efe4;
+      --paper: #fffaf4;
+      --navy: #102232;
+      --navy2: #18384a;
+      --blue: #4f7d89;
+      --blue2: #2e5f73;
+      --sand: #d8bea1;
+      --rose: #c78477;
+      --gold: #d8b18b;
+      --green: #667a6f;
+      --ink: #1b2731;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      z-index: 999;
+      background-image:
+        radial-gradient(rgba(255,255,255,.35) 0.6px, transparent 0.6px);
+      background-size: 7px 7px;
+      mix-blend-mode: soft-light;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      z-index: 1000;
+      background: rgba(255,255,255,.08);
+    }
+
+    .progressBar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #dfb48e, #fff2df);
+      transition: width 0.08s linear;
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding:
+        calc(env(safe-area-inset-top) + 34px)
+        22px
+        calc(env(safe-area-inset-bottom) + 50px);
+      background:
+        radial-gradient(circle at 78% 16%, rgba(222,178,139,.22), transparent 25%),
+        radial-gradient(circle at 18% 80%, rgba(93,137,145,.28), transparent 36%),
+        linear-gradient(160deg, #0c1d2b 0%, #1f4257 45%, #6d8279 100%);
+      isolation: isolate;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to top, rgba(6,16,24,.48), transparent 45%),
+        radial-gradient(circle at center, transparent 30%, rgba(6,16,24,.25) 100%);
+      z-index: -1;
+    }
+
+    .sun {
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      top: 9%;
+      right: -35px;
+      border-radius: 50%;
+      background: rgba(232,193,155,.14);
+      border: 1px solid rgba(255,240,221,.14);
+      box-shadow: 0 0 100px rgba(226,181,144,.18);
+      transform: translateY(0);
+    }
+
+    .wave {
+      position: absolute;
+      left: -20%;
+      width: 140%;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.075);
+      transform-origin: center;
+      animation: breathe 8s ease-in-out infinite;
+    }
+
+    .wave.one {
+      height: 320px;
+      bottom: 13%;
+    }
+
+    .wave.two {
+      height: 420px;
+      bottom: 6%;
+      animation-delay: -2s;
+    }
+
+    .wave.three {
+      height: 530px;
+      bottom: -3%;
+      animation-delay: -4s;
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: scaleX(1) translateY(0); }
+      50% { transform: scaleX(1.03) translateY(-8px); }
+    }
+
+    .heroTop {
+      position: absolute;
+      top: calc(env(safe-area-inset-top) + 20px);
+      left: 22px;
+      right: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 4;
+    }
+
+    .heroSmall {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .3em;
+      color: rgba(255,255,255,.62);
+    }
+
+    .heroDate {
+      font-size: 9px;
+      letter-spacing: .15em;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      color: #f7e7d7;
+    }
+
+    .heroContent {
+      position: relative;
+      z-index: 4;
+      max-width: 860px;
+    }
+
+    .heroEyebrow {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .33em;
+      color: #e6c0a0;
+    }
+
+    .heroTitle {
+      margin-top: 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(68px, 18vw, 132px);
+      line-height: .78;
+      letter-spacing: -.06em;
+      font-weight: 400;
+    }
+
+    .heroTitle span {
+      display: block;
+      margin-top: 15px;
+      color: #e8bea0;
+      font-style: italic;
+    }
+
+    .heroCopy {
+      margin-top: 28px;
+      max-width: 570px;
+      font-size: clamp(17px, 4.2vw, 21px);
+      line-height: 1.58;
+      color: rgba(255,248,239,.73);
+    }
+
+    .heroCopy strong {
+      color: #fff8ef;
+      font-weight: 600;
+    }
+
+    .heroScroll {
+      margin-top: 42px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .24em;
+      color: rgba(255,255,255,.38);
+    }
+
+    .heroScroll::before {
+      content: "";
+      width: 42px;
+      height: 1px;
+      background: rgba(255,255,255,.28);
+    }
+
+    .section {
+      position: relative;
+      min-height: 85svh;
+      padding: 95px 20px;
+      overflow: hidden;
+    }
+
+    .inner {
+      width: min(100%, 980px);
+      margin: auto;
+      position: relative;
+      z-index: 3;
+    }
+
+    .label {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .3em;
+      color: var(--rose);
+    }
+
+    .title {
+      margin-top: 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 11vw, 80px);
+      line-height: .94;
+      letter-spacing: -.04em;
+      font-weight: 400;
+    }
+
+    .title i {
+      font-weight: 400;
+      color: var(--rose);
+    }
+
+    .intro {
+      margin-top: 22px;
+      max-width: 590px;
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(27,39,49,.63);
+    }
+
+    .light {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    .dark {
+      background: #131b21;
+      color: #fff7ed;
+    }
+
+    .dark .intro {
+      color: rgba(255,255,255,.55);
+    }
+
+    .dark .title {
+      color: #fff5ea;
+    }
+
+    .oceanScene {
+      background:
+        radial-gradient(circle at 78% 18%, rgba(242,207,174,.12), transparent 24%),
+        linear-gradient(160deg, #244c60, #4f7b86 52%, #82978b 100%);
+      color: white;
+    }
+
+    .oceanScene .intro {
+      color: rgba(255,255,255,.64);
+    }
+
+    .oceanScene .title {
+      color: white;
+    }
+
+    .nightScene {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(212,176,137,.12), transparent 35%),
+        linear-gradient(180deg, #111b27 0%, #09111a 100%);
+      color: white;
+    }
+
+    .nightScene .intro {
+      color: rgba(255,255,255,.54);
+    }
+
+    .nightScene .title {
+      color: #fff6eb;
+    }
+
+    .sceneNumber {
+      position: absolute;
+      top: 25px;
+      right: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(90px, 28vw, 230px);
+      color: rgba(20,39,55,.035);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .dark .sceneNumber,
+    .nightScene .sceneNumber,
+    .oceanScene .sceneNumber {
+      color: rgba(255,255,255,.035);
+    }
+
+    .cards {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      perspective: 1200px;
+    }
+
+    .placeCard {
+      min-height: 320px;
+      position: relative;
+      padding: 24px;
+      border-radius: 30px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transform-style: preserve-3d;
+      background:
+        linear-gradient(160deg, rgba(17,37,53,.98), rgba(41,71,81,.96));
+      color: white;
+      box-shadow: 0 20px 60px rgba(20,33,43,.10);
+      transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+    }
+
+    .placeCard:nth-child(2) {
+      background: linear-gradient(160deg, #cfad88, #e3ccb2);
+      color: var(--ink);
+    }
+
+    .placeCard:nth-child(3) {
+      background: linear-gradient(160deg, #af6854, #8e4f43);
+    }
+
+    .placeCard::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      right: -50px;
+      top: -50px;
+      background: rgba(255,255,255,.08);
+      filter: blur(2px);
+    }
+
+    .placeTag {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      opacity: .62;
+    }
+
+    .placeName {
+      margin-top: 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 31px;
+      line-height: 1;
+    }
+
+    .placeText {
+      margin-top: 14px;
+      font-size: 12px;
+      line-height: 1.65;
+      opacity: .72;
+    }
+
+    .oceanStrip {
+      margin-top: 48px;
+      position: relative;
+      min-height: 300px;
+      border-radius: 34px;
+      overflow: hidden;
+      padding: 26px;
+      display: flex;
+      align-items: flex-end;
+      background:
+        radial-gradient(circle at 65% 20%, rgba(255,215,179,.16), transparent 26%),
+        linear-gradient(160deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
+    }
+
+    .oceanStrip::before,
+    .oceanStrip::after {
+      content: "";
+      position: absolute;
+      left: -15%;
+      width: 130%;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.09);
+      animation: floatWave 9s ease-in-out infinite;
+    }
+
+    .oceanStrip::before {
+      height: 230px;
+      bottom: -80px;
+    }
+
+    .oceanStrip::after {
+      height: 310px;
+      bottom: -130px;
+      animation-delay: -4s;
+    }
+
+    @keyframes floatWave {
+      0%,100% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(2%) translateY(-10px); }
+    }
+
+    .oceanTextBlock {
+      max-width: 560px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .oceanSmall {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .22em;
+      color: #f0c8a7;
+    }
+
+    .oceanBig {
+      margin-top: 13px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 8vw, 58px);
+      line-height: .97;
+    }
+
+    .oceanBody {
+      margin-top: 14px;
+      max-width: 500px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: rgba(255,255,255,.62);
+    }
+
+    .surfNote {
+      margin-top: 20px;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .13em;
+      color: #f7dfca;
+    }
+
+    .foodGrid {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .foodCard {
+      min-height: 180px;
+      padding: 22px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .foodCard::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      right: -30px;
+      top: -30px;
+      background: rgba(213,168,128,.06);
+    }
+
+    .foodName {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 27px;
+    }
+
+    .foodText {
+      margin-top: 9px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(255,255,255,.48);
+    }
+
+    .timeline {
+      margin-top: 44px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 17px;
+      top: 5px;
+      bottom: 5px;
+      width: 1px;
+      background: rgba(20,39,55,.15);
+    }
+
+    .timeItem {
+      position: relative;
+      display: grid;
+      grid-template-columns: 45px 1fr;
+      gap: 18px;
+      padding: 0 0 34px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      margin-left: 12px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: var(--rose);
+      box-shadow: 0 0 0 7px rgba(199,132,119,.11);
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeLabel {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .17em;
+      color: var(--rose);
+    }
+
+    .timeTitle {
+      margin-top: 7px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      color: var(--ink);
+    }
+
+    .timeText {
+      margin-top: 7px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(27,39,49,.58);
+      max-width: 520px;
+    }
+
+    .afterFencing {
+      margin-top: 42px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .mood {
+      padding: 22px;
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 18px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.085);
+      background: rgba(255,255,255,.04);
+    }
+
+    .moodLevel {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 31px;
+      color: #dfad8d;
+    }
+
+    .moodText {
+      color: rgba(255,255,255,.63);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .romance {
+      min-height: 100svh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: 100px 22px 55px;
+      background:
+        radial-gradient(circle at 50% 26%, rgba(218,176,137,.15), transparent 24%),
+        radial-gradient(circle at 15% 75%, rgba(65,112,132,.2), transparent 28%),
+        linear-gradient(180deg, #111b27 0%, #071019 100%);
+      color: white;
+    }
+
+    .stars {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: white;
+      opacity: .5;
+      animation: twinkle 3.2s ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%,100% { opacity: .15; transform: scale(.7); }
+      50% { opacity: .75; transform: scale(1.2); }
+    }
+
+    .romanceContent {
+      width: min(100%, 900px);
+      margin: auto;
+      position: relative;
+      z-index: 3;
+    }
+
+    .romanceSmall {
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .31em;
+      color: #d8aa88;
+    }
+
+    .romanceTitle {
+      margin-top: 18px;
+      max-width: 840px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(47px, 12vw, 90px);
+      line-height: .92;
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+
+    .romanceTitle span {
+      color: #ddb08c;
+      font-style: italic;
+    }
+
+    .romanceText {
+      margin-top: 28px;
+      max-width: 590px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,.58);
+    }
+
+    .finalLine {
+      margin-top: 50px;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: 1.2s ease;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(25px, 7vw, 44px);
+      color: #f7e9dc;
+    }
+
+    .finalLine.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .signature {
+      margin-top: 13px;
+      font-size: 9px;
+      letter-spacing: .22em;
+      color: rgba(255,255,255,.34);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px) scale(.985);
+      transition:
+        opacity .85s ease,
+        transform .85s ease;
+      will-change: transform, opacity;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .parallax {
+      will-change: transform;
+    }
+
+    @media(max-width: 780px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .foodGrid {
+        grid-template-columns: 1fr;
+      }
+
+      .placeCard {
+        min-height: 250px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+<div class="noise"></div>
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+<div class="progress">
+  <div class="progressBar" id="progressBar"></div>
+</div>
 
-<section class="hero">
+<section class="hero" id="hero">
 
-  <div class="sun"></div>
+  <div class="sun parallax" data-speed="0.08"></div>
 
   <div class="wave one"></div>
   <div class="wave two"></div>
   <div class="wave three"></div>
 
-
   <div class="heroTop">
-
-    <div class="heroSmall">
-      MOROCCO · OCTOBER
-    </div>
-
-    <div class="heroDate">
-      14—21
-    </div>
-
+    <div class="heroSmall">MOROCCO · OCTOBER</div>
+    <div class="heroDate">14—21</div>
   </div>
 
-
-  <div class="heroContent">
+  <div class="heroContent parallax" data-speed="-0.03">
 
     <div class="heroEyebrow">
-      WE'RE ACTUALLY GOING
+      ONE TRIP · ONE CITY · THREE OF US
     </div>
 
-
     <h1 class="heroTitle">
-
       CASA
-
-      <span>
-        BLANCA
-      </span>
-
+      <span>BLANCA</span>
     </h1>
 
-
-    <div class="heroText">
-
-      Apparently fencing had to happen
-      in Morocco.
+    <div class="heroCopy">
+      We came here because apparently
+      <strong>fencing had to happen in Morocco.</strong>
 
       <br><br>
 
-      <strong>
-        Fine.
-      </strong>
-
-      At least there's an ocean,
-      Moroccan food,
-      rooftops,
-      beaches
-      and an entire city waiting
-      outside the venue.
-
+      But I have a feeling the parts we’ll remember
+      most won’t happen on the piste.
     </div>
-
 
     <div class="heroScroll">
-      LET'S SEE WHAT WE CAN ACTUALLY DO
+      THE PARTS IN BETWEEN
     </div>
 
   </div>
@@ -1266,272 +798,82 @@ footer{
 </section>
 
 
-<!-- =========================================================
-     FIRST CHOICE
-========================================================= -->
+<section class="section light">
 
-<section class="section">
+  <div class="sceneNumber parallax" data-speed="0.04">01</div>
 
   <div class="inner">
 
     <div class="label reveal">
-      FIRST THINGS FIRST
+      FIRST · THE CITY
     </div>
 
-
     <h2 class="title reveal">
-
-      How much energy
-
-      <i>
-        do we have?
-      </i>
-
+      A city we didn’t come
+      <i>for.</i>
     </h2>
-
 
     <div class="intro reveal">
-
-      Because this entire trip depends
-      heavily on whether fencing has
-      destroyed us that day.
-
+      Which somehow makes exploring it better.
+      No huge checklist. No pressure to see everything.
+      Just a few places that actually feel worth remembering.
     </div>
-
-
-    <div class="choiceGrid">
-
-
-      <div class="choice one reveal">
-
-        <div class="choiceSmall">
-          WE FEEL HUMAN
-        </div>
-
-        <div class="choiceTitle">
-          Mosque, city, ocean, dinner.
-        </div>
-
-      </div>
-
-
-      <div class="choice two reveal">
-
-        <div class="choiceSmall">
-          MODERATELY DEAD
-        </div>
-
-        <div class="choiceTitle">
-          Corniche, food, sunset.
-        </div>
-
-      </div>
-
-
-      <div class="choice three reveal">
-
-        <div class="choiceSmall">
-          COMPLETELY FINISHED
-        </div>
-
-        <div class="choiceTitle">
-          Eat something and disappear.
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     THINGS WE ACTUALLY WANT
-========================================================= -->
-
-<section class="section">
-
-  <div class="inner">
-
-    <div class="label reveal">
-      THE MAIN ONES
-    </div>
-
-
-    <h2 class="title reveal">
-
-      Things we should
-
-      <i>
-        actually do.
-      </i>
-
-    </h2>
-
 
     <div class="cards">
 
+      <div class="placeCard reveal tilt">
 
-      <div class="card reveal">
-
-        <div class="cardHuge">
-          01
+        <div class="placeTag">
+          THE ONE WE HAVE TO SEE
         </div>
 
-        <div class="cardLabel">
-          OBVIOUSLY
-        </div>
-
-        <div class="cardTitle">
+        <div class="placeName">
           Hassan II Mosque
         </div>
 
-        <div class="cardText">
-
-          The one thing that would be
-          genuinely ridiculous to skip.
-
-          Even better around sunset
-          with the Atlantic right there.
-
+        <div class="placeText">
+          Right beside the Atlantic,
+          huge, dramatic and probably the closest
+          Casablanca gets to a genuine “wow” moment.
         </div>
 
       </div>
 
+      <div class="placeCard reveal tilt">
 
-      <div class="card ocean reveal">
-
-        <div class="cardHuge">
-          02
+        <div class="placeTag">
+          SLOW MORNING
         </div>
 
-        <div class="cardLabel">
-          EASY WIN
-        </div>
-
-        <div class="cardTitle">
-          Corniche
-        </div>
-
-        <div class="cardText">
-
-          Ocean, cafés, restaurants,
-          sunset and absolutely no need
-          to pretend we're being cultural.
-
-        </div>
-
-      </div>
-
-
-      <div class="card sand reveal">
-
-        <div class="cardHuge">
-          03
-        </div>
-
-        <div class="cardLabel">
-          WHEN WE WANT MOROCCO
-        </div>
-
-        <div class="cardTitle">
+        <div class="placeName">
           Habous
         </div>
 
-        <div class="cardText">
-
-          Arches, traditional shops,
-          calmer streets,
-          Moroccan details
-          and an easy place to wander.
-
+        <div class="placeText">
+          Arches, little shops,
+          Moroccan details and the kind of place
+          where we can wander with absolutely no plan.
         </div>
 
       </div>
 
+      <div class="placeCard reveal tilt">
 
-      <div class="card terra reveal">
-
-        <div class="cardHuge">
-          04
+        <div class="placeTag">
+          GET A LITTLE LOST
         </div>
 
-        <div class="cardLabel">
-          JUST WALK
-        </div>
-
-        <div class="cardTitle">
+        <div class="placeName">
           Old Medina
         </div>
 
-        <div class="cardText">
-
-          Narrow streets,
-          local shops,
-          random turns
-          and probably buying
-          something we didn't need.
-
+        <div class="placeText">
+          Narrow streets, local shops
+          and a very good chance
+          somebody buys something completely unnecessary.
         </div>
 
       </div>
-
-
-      <div class="card green reveal">
-
-        <div class="cardHuge">
-          05
-        </div>
-
-        <div class="cardLabel">
-          GOOD EVENING PLAN
-        </div>
-
-        <div class="cardTitle">
-          Rooftop
-        </div>
-
-        <div class="cardText">
-
-          Dress slightly better,
-          find somewhere with a view,
-          eat properly
-          and pretend the competition
-          doesn't exist for two hours.
-
-        </div>
-
-      </div>
-
-
-      <div class="card dark reveal">
-
-        <div class="cardHuge">
-          06
-        </div>
-
-        <div class="cardLabel">
-          BECAUSE WHY NOT
-        </div>
-
-        <div class="cardTitle">
-          Hammam
-        </div>
-
-        <div class="cardText">
-
-          If the fencing has destroyed
-          every muscle we own,
-          this suddenly becomes
-          a very serious option.
-
-        </div>
-
-      </div>
-
 
     </div>
 
@@ -1540,99 +882,134 @@ footer{
 </section>
 
 
-<!-- =========================================================
-     FENCING
-========================================================= -->
+<section class="section oceanScene" id="ocean">
 
-<section class="section fencing">
+  <div class="sceneNumber parallax" data-speed="0.05">02</div>
+
+  <div class="inner">
+
+    <div class="label reveal" style="color:#f1ccb0;">
+      THEN · THE ATLANTIC
+    </div>
+
+    <h2 class="title reveal">
+      We have an
+      <i style="color:#f0c3a1;">ocean.</i>
+    </h2>
+
+    <div class="intro reveal">
+      Which feels like a pretty good reason
+      not to spend every free hour indoors.
+    </div>
+
+    <div class="oceanStrip reveal">
+
+      <div class="oceanTextBlock">
+
+        <div class="oceanSmall">
+          AÏN DIAB · CORNICHE · DAR BOUAZZA
+        </div>
+
+        <div class="oceanBig">
+          Sunset, beach,
+          a long walk and nowhere urgent to be.
+        </div>
+
+        <div class="oceanBody">
+          This is probably the easiest part of Casablanca
+          to imagine actually doing after fencing.
+          Ocean, something to drink, something to eat,
+          and staying until the sky looks good enough
+          that nobody wants to leave yet.
+        </div>
+
+        <div class="surfNote">
+          SURFING? ABSOLUTELY NOT. WE CAN WATCH.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section dark">
+
+  <div class="sceneNumber parallax" data-speed="0.04">03</div>
 
   <div class="inner">
 
     <div class="label reveal">
-      UNFORTUNATELY
+      VERY IMPORTANT · FOOD
     </div>
-
 
     <h2 class="title reveal">
-
-      There is still
-
-      <i>
-        fencing.
-      </i>
-
+      Things worth
+      <i>trying together.</i>
     </h2>
 
-
     <div class="intro reveal">
-
-      So here is the only itinerary
-      system that actually makes sense.
-
+      This part of the trip has
+      a significantly higher probability of success
+      than the surfing section.
     </div>
 
+    <div class="foodGrid">
 
-    <div class="energyGrid">
-
-
-      <div class="energy reveal">
-
-        <div class="energyLevel">
-          10%
+      <div class="foodCard reveal">
+        <div class="foodName">Tagine</div>
+        <div class="foodText">
+          The obvious Moroccan classic.
+          Slow cooked, warm, heavily spiced
+          and definitely happening.
         </div>
-
-        <div class="energyText">
-          Food. Shower. Bed.
-          Casablanca can wait.
-        </div>
-
       </div>
 
-
-      <div class="energy reveal">
-
-        <div class="energyLevel">
-          40%
+      <div class="foodCard reveal">
+        <div class="foodName">Pastilla</div>
+        <div class="foodText">
+          Sweet and savoury together.
+          Sounds suspicious.
+          Apparently works.
         </div>
-
-        <div class="energyText">
-          Corniche and something nice to eat.
-          No sightseeing speech required.
-        </div>
-
       </div>
 
-
-      <div class="energy reveal">
-
-        <div class="energyLevel">
-          70%
+      <div class="foodCard reveal">
+        <div class="foodName">Msemen</div>
+        <div class="foodText">
+          Flaky Moroccan flatbread.
+          Breakfast, snack,
+          or whatever we call it when we eat it twice.
         </div>
-
-        <div class="energyText">
-          Go somewhere,
-          walk around,
-          dinner,
-          maybe rooftop.
-        </div>
-
       </div>
 
-
-      <div class="energy reveal">
-
-        <div class="energyLevel">
-          100%
+      <div class="foodCard reveal">
+        <div class="foodName">Fresh Fish</div>
+        <div class="foodText">
+          We are next to the Atlantic.
+          Ignoring this would be unnecessarily stupid.
         </div>
-
-        <div class="energyText">
-          Somebody has clearly made
-          a serious mistake.
-          Surfing becomes possible.
-        </div>
-
       </div>
 
+      <div class="foodCard reveal">
+        <div class="foodName">Mint Tea</div>
+        <div class="foodText">
+          Probably sweeter than expected.
+          Still mandatory at least once.
+        </div>
+      </div>
+
+      <div class="foodCard reveal">
+        <div class="foodName">Moroccan Sweets</div>
+        <div class="foodText">
+          Honey, almonds, sesame,
+          pastry and temporary suspension
+          of all athletic responsibility.
+        </div>
+      </div>
 
     </div>
 
@@ -1641,347 +1018,9 @@ footer{
 </section>
 
 
-<!-- =========================================================
-     ATLANTIC
-========================================================= -->
+<section class="section light">
 
-<section class="section atlantic">
-
-  <div class="inner">
-
-    <div class="label reveal">
-      THE ATLANTIC
-    </div>
-
-
-    <h2 class="title reveal">
-
-      If we randomly
-
-      <i>
-        become active.
-      </i>
-
-    </h2>
-
-
-    <div class="intro reveal">
-
-      None of this is mandatory.
-      That's exactly why it sounds fun.
-
-    </div>
-
-
-    <div class="oceanGrid">
-
-
-      <div class="oceanCard reveal">
-
-        <div class="oceanEmoji">
-          🏄
-        </div>
-
-        <div class="oceanTitle">
-          Surf
-        </div>
-
-        <div class="oceanText">
-
-          Probably the most ambitious
-          possible addition to a fencing trip.
-
-          Which is exactly why
-          it belongs here.
-
-        </div>
-
-      </div>
-
-
-      <div class="oceanCard reveal">
-
-        <div class="oceanEmoji">
-          🚤
-        </div>
-
-        <div class="oceanTitle">
-          Jet Ski
-        </div>
-
-        <div class="oceanText">
-
-          Less skill required,
-          significantly more chaos.
-
-          Very strong option.
-
-        </div>
-
-      </div>
-
-
-      <div class="oceanCard reveal">
-
-        <div class="oceanEmoji">
-          🌊
-        </div>
-
-        <div class="oceanTitle">
-          Dar Bouazza
-        </div>
-
-        <div class="oceanText">
-
-          If we somehow get
-          a proper half day free,
-          escape the centre
-          and go towards the coast.
-
-        </div>
-
-      </div>
-
-
-      <div class="oceanCard reveal">
-
-        <div class="oceanEmoji">
-          🌅
-        </div>
-
-        <div class="oceanTitle">
-          Sunset
-        </div>
-
-        <div class="oceanText">
-
-          No booking.
-          No athletic ability.
-          No planning.
-
-          Probably the most realistic one.
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     FOOD
-========================================================= -->
-
-<section class="section food">
-
-  <div class="inner">
-
-    <div class="label reveal">
-      MORE IMPORTANT
-    </div>
-
-
-    <h2 class="title reveal">
-
-      Things we need
-
-      <i>
-        to eat.
-      </i>
-
-    </h2>
-
-
-    <div class="intro reveal">
-
-      This section has a considerably
-      higher chance of actually happening.
-
-    </div>
-
-
-    <div class="foodList">
-
-
-      <div class="foodItem reveal">
-
-        <div class="foodNo">
-          01
-        </div>
-
-        <div>
-
-          <div class="foodName">
-            Tagine
-          </div>
-
-          <div class="foodDesc">
-            The obvious Moroccan one.
-            Meat, vegetables, spices,
-            olives, preserved lemon.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="foodItem reveal">
-
-        <div class="foodNo">
-          02
-        </div>
-
-        <div>
-
-          <div class="foodName">
-            Pastilla
-          </div>
-
-          <div class="foodDesc">
-            Sweet, savoury,
-            crispy and slightly confusing
-            in the best way.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="foodItem reveal">
-
-        <div class="foodNo">
-          03
-        </div>
-
-        <div>
-
-          <div class="foodName">
-            Msemen
-          </div>
-
-          <div class="foodDesc">
-            Moroccan layered flatbread.
-            Breakfast and emergency snack.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="foodItem reveal">
-
-        <div class="foodNo">
-          04
-        </div>
-
-        <div>
-
-          <div class="foodName">
-            Harira
-          </div>
-
-          <div class="foodDesc">
-            Traditional Moroccan soup
-            with tomato, legumes,
-            herbs and spices.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="foodItem reveal">
-
-        <div class="foodNo">
-          05
-        </div>
-
-        <div>
-
-          <div class="foodName">
-            Fresh fish
-          </div>
-
-          <div class="foodDesc">
-            We're literally
-            next to the Atlantic.
-            This one makes sense.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="foodItem reveal">
-
-        <div class="foodNo">
-          06
-        </div>
-
-        <div>
-
-          <div class="foodName">
-            Mint tea
-          </div>
-
-          <div class="foodDesc">
-            At least once.
-            Probably much sweeter
-            than anyone expects.
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="foodItem reveal">
-
-        <div class="foodNo">
-          07
-        </div>
-
-        <div>
-
-          <div class="foodName">
-            Moroccan sweets
-          </div>
-
-          <div class="foodDesc">
-            Honey, almonds,
-            sesame and pastry.
-
-            Athlete nutrition
-            temporarily unavailable.
-          </div>
-
-        </div>
-
-      </div>
-
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     GOOD DAY
-========================================================= -->
-
-<section class="section day">
+  <div class="sceneNumber parallax" data-speed="0.04">04</div>
 
   <div class="inner">
 
@@ -1989,143 +1028,83 @@ footer{
       BEST CASE SCENARIO
     </div>
 
-
     <h2 class="title reveal">
-
-      One actually
-
-      <i>
-        good day.
-      </i>
-
+      One day that goes
+      <i>perfectly.</i>
     </h2>
 
-
     <div class="intro reveal">
-
-      No military itinerary.
-      Just what a genuinely nice
-      free day could look like.
-
+      Not a strict itinerary.
+      Just the version of a free day
+      that would actually feel good.
     </div>
-
 
     <div class="timeline">
 
-
-      <div class="timeCard reveal">
-
-        <div class="time">
-          MORNING
-        </div>
-
+      <div class="timeItem reveal">
+        <div class="dot"></div>
         <div>
-
-          <div class="timeTitle">
-            Coffee + Habous
-          </div>
-
+          <div class="timeLabel">MORNING</div>
+          <div class="timeTitle">Coffee + Habous</div>
           <div class="timeText">
-            Start slowly.
-            Walk around,
-            look at shops,
-            buy something unnecessary.
+            Start slowly, wander around,
+            look at little shops,
+            buy something we definitely didn’t plan to buy.
           </div>
-
         </div>
-
       </div>
 
-
-      <div class="timeCard reveal">
-
-        <div class="time">
-          LUNCH
-        </div>
-
+      <div class="timeItem reveal">
+        <div class="dot"></div>
         <div>
-
-          <div class="timeTitle">
-            Proper Moroccan food
-          </div>
-
+          <div class="timeLabel">LUNCH</div>
+          <div class="timeTitle">Something Moroccan</div>
           <div class="timeText">
-            Tagine, pastilla
-            or whatever looks best.
+            No complicated plan.
+            Just find somewhere that smells good
+            and make a decision.
           </div>
-
         </div>
-
       </div>
 
-
-      <div class="timeCard reveal">
-
-        <div class="time">
-          AFTER
-        </div>
-
+      <div class="timeItem reveal">
+        <div class="dot"></div>
         <div>
-
-          <div class="timeTitle">
-            Hassan II Mosque
-          </div>
-
+          <div class="timeLabel">AFTERNOON</div>
+          <div class="timeTitle">Hassan II Mosque</div>
           <div class="timeText">
             The one major thing
-            we actually came to see.
+            we really should not leave Casablanca without seeing.
           </div>
-
         </div>
-
       </div>
 
-
-      <div class="timeCard reveal">
-
-        <div class="time">
-          SUNSET
-        </div>
-
+      <div class="timeItem reveal">
+        <div class="dot"></div>
         <div>
-
-          <div class="timeTitle">
-            Corniche
-          </div>
-
+          <div class="timeLabel">SUNSET</div>
+          <div class="timeTitle">Corniche</div>
           <div class="timeText">
-            Ocean, walk,
-            sit somewhere,
-            no rush.
+            Ocean, no rush,
+            maybe food again,
+            probably a lot of photos.
           </div>
-
         </div>
-
       </div>
 
-
-      <div class="timeCard reveal">
-
-        <div class="time">
-          NIGHT
-        </div>
-
+      <div class="timeItem reveal">
+        <div class="dot"></div>
         <div>
-
-          <div class="timeTitle">
-            Dinner + rooftop
-          </div>
-
+          <div class="timeLabel">NIGHT</div>
+          <div class="timeTitle">Dinner + rooftop</div>
           <div class="timeText">
-            End the day somewhere nice
-            and temporarily forget
-            why we're actually in Morocco.
+            Somewhere nice,
+            slightly dressed up,
+            and for a few hours
+            completely forgetting why we came to Morocco.
           </div>
-
         </div>
-
       </div>
-
 
     </div>
 
@@ -2134,128 +1113,59 @@ footer{
 </section>
 
 
-<!-- =========================================================
-     NOT DOING
-========================================================= -->
+<section class="section nightScene">
 
-<section class="section notDoing">
+  <div class="sceneNumber parallax" data-speed="0.04">05</div>
 
   <div class="inner">
 
     <div class="label reveal">
-      IMPORTANT RULES
+      AFTER FENCING
     </div>
 
-
     <h2 class="title reveal">
-
-      Things we are
-
-      <i>
-        not doing.
-      </i>
-
+      Depends how alive
+      <i>we are.</i>
     </h2>
-
 
     <div class="intro reveal">
-
-      A short list
-      to protect the holiday.
-
+      Probably the most honest part of the whole guide.
     </div>
 
+    <div class="afterFencing">
 
-    <div class="notList">
-
-      <div class="notItem reveal">
-        Waking up at 7 AM voluntarily.
+      <div class="mood reveal">
+        <div class="moodLevel">10%</div>
+        <div class="moodText">
+          Food, shower, bed.
+          Casablanca will survive without us.
+        </div>
       </div>
 
-      <div class="notItem reveal">
-        Turning every free hour into sightseeing.
+      <div class="mood reveal">
+        <div class="moodLevel">40%</div>
+        <div class="moodText">
+          Ocean, something to eat,
+          one nice walk.
+          More than enough.
+        </div>
       </div>
 
-      <div class="notItem reveal">
-        Walking 25,000 steps before competition.
+      <div class="mood reveal">
+        <div class="moodLevel">70%</div>
+        <div class="moodText">
+          Dinner somewhere nice,
+          rooftop afterwards,
+          stay out longer than planned.
+        </div>
       </div>
 
-      <div class="notItem reveal">
-        Saying “we can eat later”.
-      </div>
-
-      <div class="notItem reveal">
-        Pretending we're not tired when we're clearly dead.
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- =========================================================
-     CHAOS
-========================================================= -->
-
-<section class="section chaos">
-
-  <div class="inner">
-
-    <div class="label reveal">
-      ONE CHAOTIC OPTION
-    </div>
-
-
-    <h2 class="title reveal">
-
-      If everything
-
-      <i>
-        lines up.
-      </i>
-
-    </h2>
-
-
-    <div class="chaosBox reveal">
-
-      <div class="chaosBig">
-        ?
-      </div>
-
-
-      <div class="chaosSmall">
-        COMPLETELY OPTIONAL
-      </div>
-
-
-      <div class="chaosTitle">
-        Ocean day.
-      </div>
-
-
-      <div class="chaosText">
-
-        No fencing for a few hours,
-        decent weather,
-        unexpected energy.
-
-        <br><br>
-
-        Dar Bouazza.
-        Beach.
-        Something on the water.
-        Maybe surf.
-        Maybe jet ski.
-        Food afterwards.
-
-        <br><br>
-
-        If it happens, great.
-        If not, we never mentioned it.
-
+      <div class="mood reveal">
+        <div class="moodLevel">100%</div>
+        <div class="moodText">
+          Completely suspicious.
+          Somebody check whether we actually fenced.
+        </div>
       </div>
 
     </div>
@@ -2265,97 +1175,311 @@ footer{
 </section>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<section class="romance" id="romance">
 
-<footer>
+  <div class="stars" id="stars"></div>
 
-  <div class="footerSmall">
-    CASABLANCA · OCTOBER
+  <div class="romanceContent">
+
+    <div class="romanceSmall reveal">
+      THE PART I ACTUALLY CARE ABOUT
+    </div>
+
+    <div class="romanceTitle reveal">
+      Maybe fencing is the reason
+      we’re going to
+      <span>Casablanca.</span>
+    </div>
+
+    <div class="romanceText reveal">
+      But I don’t think that will be the part
+      we remember most.
+
+      <br><br>
+
+      I think it’ll be the random food,
+      the ocean after a long day,
+      getting somewhere later than planned,
+      being tired together,
+      laughing at something stupid,
+      and all the little parts in between
+      that nobody planned.
+    </div>
+
+    <div class="finalLine" id="finalLine">
+      Casablanca, with you.
+    </div>
+
+    <div class="signature reveal">
+      OCTOBER · MOROCCO
+    </div>
+
   </div>
 
-
-  <div class="footerTitle">
-
-    Came for fencing.
-
-    <span>
-      Might as well have a holiday.
-    </span>
-
-  </div>
-
-
-  <div class="footerText">
-
-    No strict plan.
-    Just better ideas.
-
-  </div>
-
-</footer>
+</section>
 
 
 <script>
+  /* =========================================================
+     SCROLL PROGRESS
+  ========================================================= */
 
-/* =========================================================
-   REVEAL
-========================================================= */
+  const progressBar = document.getElementById("progressBar");
 
-const items =
-document.querySelectorAll(
-  ".reveal"
-);
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const progress =
+      docHeight > 0
+        ? (scrollTop / docHeight) * 100
+        : 0;
+
+    progressBar.style.width = progress + "%";
+  }
+
+  window.addEventListener("scroll", updateProgress, { passive: true });
+  updateProgress();
 
 
-const observer =
-new IntersectionObserver(
+  /* =========================================================
+     REVEALS
+  ========================================================= */
 
-  entries=>{
+  const revealItems = document.querySelectorAll(".reveal");
 
-    entries.forEach(
-      entry=>{
-
-        if(
-          entry.isIntersecting
-        ){
-
-          entry.target.classList.add(
-            "visible"
-          );
-
-          observer.unobserve(
-            entry.target
-          );
-
+  const revealObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
         }
+      });
+    },
+    {
+      threshold: 0.13
+    }
+  );
 
+  revealItems.forEach(item => revealObserver.observe(item));
+
+
+  /* =========================================================
+     PARALLAX
+  ========================================================= */
+
+  const parallaxItems = document.querySelectorAll(".parallax");
+
+  let ticking = false;
+
+  function parallaxScroll() {
+    const y = window.scrollY;
+
+    parallaxItems.forEach(item => {
+      const speed =
+        parseFloat(item.dataset.speed || "0");
+
+      item.style.transform =
+        `translate3d(0, ${y * speed}px, 0)`;
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(parallaxScroll);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+
+
+  /* =========================================================
+     TILT CARDS
+  ========================================================= */
+
+  const tiltCards = document.querySelectorAll(".tilt");
+
+  tiltCards.forEach(card => {
+
+    card.addEventListener("pointermove", e => {
+
+      if (window.innerWidth < 800) return;
+
+      const rect = card.getBoundingClientRect();
+
+      const x =
+        (e.clientX - rect.left) / rect.width;
+
+      const y =
+        (e.clientY - rect.top) / rect.height;
+
+      const rotateY =
+        (x - 0.5) * 8;
+
+      const rotateX =
+        (0.5 - y) * 8;
+
+      card.style.transform =
+        `rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)
+         translateY(-4px)`;
+
+      card.style.boxShadow =
+        "0 28px 70px rgba(20,33,43,.18)";
+    });
+
+
+    card.addEventListener("pointerleave", () => {
+
+      card.style.transform =
+        "rotateX(0deg) rotateY(0deg) translateY(0)";
+
+      card.style.boxShadow =
+        "0 20px 60px rgba(20,33,43,.10)";
+    });
+
+  });
+
+
+  /* =========================================================
+     NIGHT STARS
+  ========================================================= */
+
+  const starsContainer =
+    document.getElementById("stars");
+
+  function createStars() {
+
+    for (let i = 0; i < 48; i++) {
+
+      const star =
+        document.createElement("div");
+
+      star.className = "star";
+
+      star.style.left =
+        Math.random() * 100 + "%";
+
+      star.style.top =
+        Math.random() * 100 + "%";
+
+      const size =
+        Math.random() * 2.2 + 0.8;
+
+      star.style.width =
+        size + "px";
+
+      star.style.height =
+        size + "px";
+
+      star.style.animationDelay =
+        Math.random() * 4 + "s";
+
+      star.style.animationDuration =
+        2.3 + Math.random() * 3 + "s";
+
+      starsContainer.appendChild(star);
+    }
+
+  }
+
+  createStars();
+
+
+  /* =========================================================
+     FINAL ROMANTIC REVEAL
+  ========================================================= */
+
+  const romance =
+    document.getElementById("romance");
+
+  const finalLine =
+    document.getElementById("finalLine");
+
+  const finalObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            setTimeout(() => {
+              finalLine.classList.add("show");
+            }, 900);
+
+            finalObserver.unobserve(entry.target);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.45
       }
     );
 
-  },
-
-  {
-    threshold:.12
-  }
-
-);
+  finalObserver.observe(romance);
 
 
-items.forEach(
-  item=>{
+  /* =========================================================
+     HERO MOUSE LIGHT
+     DESKTOP ONLY
+  ========================================================= */
 
-    observer.observe(
-      item
-    );
+  const hero =
+    document.getElementById("hero");
 
-  }
-);
+  hero.addEventListener(
+    "pointermove",
+    e => {
+
+      if (window.innerWidth < 850) return;
+
+      const rect =
+        hero.getBoundingClientRect();
+
+      const x =
+        ((e.clientX - rect.left) / rect.width) * 100;
+
+      const y =
+        ((e.clientY - rect.top) / rect.height) * 100;
+
+      hero.style.background =
+        `
+        radial-gradient(
+          circle at ${x}% ${y}%,
+          rgba(236,194,156,.13),
+          transparent 22%
+        ),
+        radial-gradient(
+          circle at 78% 16%,
+          rgba(222,178,139,.22),
+          transparent 25%
+        ),
+        radial-gradient(
+          circle at 18% 80%,
+          rgba(93,137,145,.28),
+          transparent 36%
+        ),
+        linear-gradient(
+          160deg,
+          #0c1d2b 0%,
+          #1f4257 45%,
+          #6d8279 100%
+        )
+        `;
+    }
+  );
 
 </script>
 
-
 </body>
-
 </html>
